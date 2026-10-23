@@ -866,7 +866,7 @@ p {
 
 <!-- Scene 9: Date Picker -->
 <div class="scene" id="scene-9">
-  <h2>SHE SAID YES?! 🎉</h2>
+  <h2>THATS A  YES?! 🎉</h2>
   <p style="margin:8px 0 4px">Wait fr?? Okay okay act cool.<br>So… what are we doing? 😎</p>
   <div class="date-options">
     <div class="date-option" onclick="selectDate(this)">
@@ -969,17 +969,34 @@ p {
   <p style="margin-top:16px;font-size:12px;color:var(--brown-light)">— with all the butterflies, Sandip 🦋</p>
 </div>
 
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/13.1.0/firebase-app.js";
+import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/13.1.0/firebase-database.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDHPmo3MQ_0RSn3aUuxcsGJU1DbnOp_Ui0",
+  authDomain: "project1-c7010.firebaseapp.com",
+  databaseURL: "https://project1-c7010-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "project1-c7010",
+  storageBucket: "project1-c7010.firebasestorage.app",
+  messagingSenderId: "69258944144",
+  appId: "1:69258944144:web:3e77026ec981402b010215"
+};
+
+const fbApp = initializeApp(firebaseConfig);
+const db = getDatabase(fbApp);
+
+window.firebaseSaveResponse = function(data) {
+  push(ref(db, 'responses'), data).catch(e => console.log('Firebase save error:', e));
+};
+</script>
+
 <script>
 const CONFESSIONS = [
   "I really enjoy talking to you… like more than I expected.",
   "There's something about you I can't ignore.",
-  "I think I like you a little more than I should.",
   "You've been on my mind a lot lately.",
-  "I feel different when I'm around you.",
-  "I don't know what it is, but you make me smile for no reason.",
-  "Talking to you is honestly my favorite part of the day.",
   "I didn't plan on liking you… but here we are.",
-  "I'm starting to think I like you… should I be worried?",
   "You're kinda becoming my favorite distraction."
 ];
 
@@ -1243,15 +1260,15 @@ function finishGame() {
 function showConfession(idx) {
   confessionIndex = idx;
   document.getElementById('current-confession').textContent = '"' + CONFESSIONS[idx] + '"';
-  document.getElementById('confession-counter').textContent = (idx + 1) + ' of 10';
+  document.getElementById('confession-counter').textContent = (idx + 1) + ' of 5';
   document.getElementById('conf-prev').style.visibility = idx === 0 ? 'hidden' : 'visible';
-  document.getElementById('conf-next').textContent = idx === 9 ? 'Continue 💕' : 'Next →';
+  document.getElementById('conf-next').textContent = idx === 4 ? 'Continue 💕' : 'Next →';
 }
 function prevConfession() {
   if (confessionIndex > 0) showConfession(confessionIndex - 1);
 }
 function nextConfession() {
-  if (confessionIndex < 9) {
+  if (confessionIndex < 4) {
     showConfession(confessionIndex + 1);
   } else {
     nextScene();
@@ -1319,7 +1336,7 @@ function sayYes() {
   overlay.id = 'yes-celebration';
   overlay.innerHTML = `
     <div style="font-size:80px;animation:celebBounce 0.5s ease-out">🎉</div>
-    <div style="font-size:36px;font-weight:800;font-family:'Satisfy',cursive;color:var(--pink);margin:8px 0;animation:celebBounce 0.5s ease-out 0.1s both">SHE SAID YES!</div>
+    <div style="font-size:36px;font-weight:800;font-family:'Satisfy',cursive;color:var(--pink);margin:8px 0;animation:celebBounce 0.5s ease-out 0.1s both">THATS A YES!</div>
     <div style="font-size:40px;animation:celebBounce 0.5s ease-out 0.2s both">🥳🎊🥺💕🎉</div>
     <div style="font-size:14px;margin-top:12px;color:var(--text-soft);animation:celebBounce 0.5s ease-out 0.3s both">*happy bear noises* 🐻💙</div>
   `;
@@ -1383,6 +1400,17 @@ function checkDateTime() {
 }
 
 function confirmAndSave() {
+  // Save to Firebase
+  if (window.firebaseSaveResponse) {
+    const data = {
+      answer: 'YES 💕',
+      dateType: selectedDate,
+      date: document.getElementById('pick-date').value || '',
+      time: document.getElementById('pick-time').value || '',
+      timestamp: new Date().toISOString()
+    };
+    window.firebaseSaveResponse(data);
+  }
   nextScene();
 }
 
