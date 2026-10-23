@@ -1,0 +1,1435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hey Shubhangi ✨</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Satisfy&display=swap">
+<style>
+:root {
+  --bg: #FFF5F5;
+  --fg: #4A2C2A;
+  --pink: #FF6B8A;
+  --pink-light: #FFD4DE;
+  --pink-dark: #E84E6A;
+  --coral: #FF8A80;
+  --gold: #FFD54F;
+  --cream: #FFF8F0;
+  --brown: #8B6F5E;
+  --brown-light: #BFA58E;
+  --green: #81C784;
+  --blue: #64B5F6;
+  --purple: #BA68C8;
+  --text-soft: #7A5A58;
+  --shadow: rgba(255,107,138,0.15);
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: 'Quicksand', 'Nunito', sans-serif;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0;
+  -webkit-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.scene {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  padding-left: max(20px, env(safe-area-inset-left, 0px));
+  padding-right: max(20px, env(safe-area-inset-right, 0px));
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.scene.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.floating-hearts {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+.floating-hearts .heart {
+  position: absolute;
+  font-size: 20px;
+  opacity: 0.15;
+  animation: floatUp linear infinite;
+}
+@keyframes floatUp {
+  0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.15; }
+  90% { opacity: 0.15; }
+  100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+}
+
+.bubu-dudu {
+  position: relative;
+  width: 200px;
+  height: 120px;
+  margin: 10px auto;
+}
+
+.bear {
+  position: absolute;
+  bottom: 0;
+}
+.bear-body {
+  width: 60px;
+  height: 65px;
+  border-radius: 50% 50% 45% 45%;
+  position: relative;
+}
+.bear-head {
+  width: 50px;
+  height: 45px;
+  border-radius: 50%;
+  position: absolute;
+  top: -30px;
+  left: 5px;
+}
+.bear-ear {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  position: absolute;
+  top: -8px;
+}
+.bear-ear.left { left: 2px; }
+.bear-ear.right { right: 2px; }
+.bear-ear-inner {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+}
+.bear-eye {
+  width: 6px;
+  height: 7px;
+  background: #2D1B14;
+  border-radius: 50%;
+  position: absolute;
+  top: 15px;
+}
+.bear-eye.left { left: 12px; }
+.bear-eye.right { right: 12px; }
+.bear-eye.blink {
+  animation: blink 4s infinite;
+}
+@keyframes blink {
+  0%, 95%, 100% { transform: scaleY(1); }
+  97% { transform: scaleY(0.1); }
+}
+.bear-nose {
+  width: 8px;
+  height: 5px;
+  background: #5D3A2E;
+  border-radius: 50%;
+  position: absolute;
+  top: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.bear-mouth {
+  width: 12px;
+  height: 6px;
+  border: 2px solid #5D3A2E;
+  border-top: none;
+  border-radius: 0 0 50% 50%;
+  position: absolute;
+  top: 26px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.bear-blush {
+  width: 10px;
+  height: 6px;
+  background: rgba(255,150,150,0.5);
+  border-radius: 50%;
+  position: absolute;
+  top: 20px;
+}
+.bear-blush.left { left: 5px; }
+.bear-blush.right { right: 5px; }
+.bear-arm {
+  width: 18px;
+  height: 30px;
+  border-radius: 50%;
+  position: absolute;
+  top: 15px;
+}
+
+.bubu { left: 30px; }
+.bubu .bear-body { background: #7EB8C9; }
+.bubu .bear-head { background: #7EB8C9; }
+.bubu .bear-ear { background: #7EB8C9; }
+.bubu .bear-ear-inner { background: #B8DDE8; }
+.bubu .bear-arm { background: #6CAABB; }
+.bubu .bear-arm.left { left: -8px; transform: rotate(20deg); }
+.bubu .bear-arm.right { right: -8px; transform: rotate(-20deg); }
+
+.dudu { right: 30px; }
+.dudu .bear-body { background: #F5F0E8; }
+.dudu .bear-head { background: #F5F0E8; }
+.dudu .bear-ear { background: #F5F0E8; }
+.dudu .bear-ear-inner { background: #FFD4DE; }
+.dudu .bear-arm { background: #EBE5DA; }
+.dudu .bear-arm.left { left: -8px; transform: rotate(20deg); }
+.dudu .bear-arm.right { right: -8px; transform: rotate(-20deg); }
+
+.love-heart {
+  position: absolute;
+  left: 50%;
+  top: 10px;
+  transform: translateX(-50%);
+  font-size: 28px;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { transform: translateX(-50%) scale(1); }
+  50% { transform: translateX(-50%) scale(1.2); }
+}
+
+h1 {
+  font-family: 'Satisfy', cursive;
+  font-size: clamp(28px, 8vw, 44px);
+  color: var(--pink);
+  text-align: center;
+  text-wrap: balance;
+  line-height: 1.3;
+  margin-bottom: 8px;
+}
+h2 {
+  font-family: 'Satisfy', cursive;
+  font-size: clamp(22px, 6vw, 32px);
+  color: var(--pink);
+  text-align: center;
+  text-wrap: balance;
+  line-height: 1.3;
+}
+p {
+  font-size: clamp(14px, 4vw, 17px);
+  color: var(--text-soft);
+  text-align: center;
+  line-height: 1.6;
+  max-width: 340px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 14px 36px;
+  border: none;
+  border-radius: 50px;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+.btn:active { transform: scale(0.96); }
+.btn-pink {
+  background: linear-gradient(135deg, var(--pink), var(--coral));
+  color: #fff;
+  box-shadow: 0 4px 20px var(--shadow);
+}
+.btn-pink:hover { box-shadow: 0 6px 28px rgba(255,107,138,0.3); }
+.btn-outline {
+  background: transparent;
+  color: var(--pink);
+  border: 2px solid var(--pink-light);
+}
+
+.confession-card {
+  background: var(--cream);
+  border-radius: 20px;
+  padding: 20px 24px;
+  max-width: 320px;
+  text-align: center;
+  box-shadow: 0 4px 24px var(--shadow);
+  margin: 12px 0;
+  position: relative;
+}
+.confession-card::before {
+  content: '💌';
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 24px;
+}
+.confession-text {
+  font-family: 'Satisfy', cursive;
+  font-size: clamp(17px, 5vw, 22px);
+  color: var(--pink-dark);
+  line-height: 1.5;
+}
+.confession-count {
+  font-size: 12px;
+  color: var(--brown-light);
+  margin-top: 8px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.memory-scene {
+  width: 100%;
+  max-width: 340px;
+  background: var(--cream);
+  border-radius: 24px;
+  padding: 20px;
+  box-shadow: 0 4px 24px var(--shadow);
+  text-align: center;
+  margin: 8px 0;
+}
+.memory-illustration {
+  width: 100%;
+  height: 160px;
+  border-radius: 16px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+.memory-title {
+  font-family: 'Satisfy', cursive;
+  font-size: 20px;
+  color: var(--pink);
+  margin-bottom: 6px;
+}
+.memory-desc {
+  font-size: 13px;
+  color: var(--text-soft);
+  line-height: 1.5;
+}
+
+#game-container {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  height: 340px;
+  background: linear-gradient(180deg, #FFE8EE 0%, #FFF5F5 100%);
+  border-radius: 24px;
+  overflow: hidden;
+  touch-action: none;
+  box-shadow: 0 4px 24px var(--shadow);
+}
+#game-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.game-ui {
+  position: absolute;
+  top: 12px;
+  left: 16px;
+  right: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 2;
+  pointer-events: none;
+}
+.game-score, .game-timer {
+  background: rgba(255,255,255,0.9);
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--pink);
+  backdrop-filter: blur(8px);
+}
+.game-instructions {
+  font-size: 13px;
+  color: var(--text-soft);
+  text-align: center;
+  margin-top: 8px;
+}
+
+.ask-buttons {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 16px;
+  min-height: 80px;
+  position: relative;
+}
+#btn-yes {
+  background: linear-gradient(135deg, var(--pink), #FF4081);
+  color: #fff;
+  padding: 16px 40px;
+  border: none;
+  border-radius: 50px;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.3s ease, font-size 0.3s ease, padding 0.3s ease;
+  box-shadow: 0 4px 24px rgba(255,64,129,0.3);
+  z-index: 2;
+}
+#btn-no {
+  background: var(--pink-light);
+  color: var(--pink);
+  padding: 12px 28px;
+  border: none;
+  border-radius: 50px;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.date-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  width: 100%;
+  max-width: 320px;
+  margin: 12px 0;
+}
+.date-option {
+  background: var(--cream);
+  border: 2px solid var(--pink-light);
+  border-radius: 16px;
+  padding: 14px 10px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Quicksand', sans-serif;
+}
+.date-option:hover, .date-option.selected {
+  background: var(--pink);
+  border-color: var(--pink);
+  color: #fff;
+  transform: scale(1.03);
+}
+.date-option .date-emoji {
+  font-size: 28px;
+  display: block;
+  margin-bottom: 4px;
+}
+.date-option .date-label {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.celebration-emoji {
+  font-size: 60px;
+  animation: bounce 0.8s ease infinite;
+}
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+.confetti-piece {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  animation: confettiFall linear forwards;
+  pointer-events: none;
+  z-index: 100;
+}
+@keyframes confettiFall {
+  0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+}
+@keyframes yesCelebShake {
+  0%, 100% { transform: translateX(0); }
+  10% { transform: translateX(-8px) rotate(-1deg); }
+  20% { transform: translateX(8px) rotate(1deg); }
+  30% { transform: translateX(-6px); }
+  40% { transform: translateX(6px); }
+  50% { transform: translateX(-3px); }
+  60% { transform: translateX(3px); }
+}
+@keyframes celebBounce {
+  0% { transform: scale(0) translateY(30px); opacity: 0; }
+  60% { transform: scale(1.15) translateY(-5px); opacity: 1; }
+  100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+.progress {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  position: fixed;
+  bottom: max(16px, env(safe-area-inset-bottom, 0px));
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+.progress .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--pink-light);
+  transition: all 0.3s;
+}
+.progress .dot.active {
+  background: var(--pink);
+  width: 24px;
+  border-radius: 4px;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+.animate-in {
+  animation: fadeInUp 0.6s ease forwards;
+}
+.animate-in-delay {
+  opacity: 0;
+  animation: fadeInUp 0.6s ease forwards;
+  animation-delay: 0.3s;
+}
+.animate-in-delay2 {
+  opacity: 0;
+  animation: fadeInUp 0.6s ease forwards;
+  animation-delay: 0.6s;
+}
+.animate-scale {
+  animation: scaleIn 0.5s ease forwards;
+}
+
+.swipe-hint {
+  font-size: 12px;
+  color: var(--brown-light);
+  margin-top: 10px;
+  animation: fadeInUp 0.6s ease forwards;
+  animation-delay: 1s;
+  opacity: 0;
+}
+
+/* Screenshot prompt styling */
+.screenshot-prompt {
+  background: var(--cream);
+  border: 2px dashed var(--pink-light);
+  border-radius: 16px;
+  padding: 16px 20px;
+  margin-top: 12px;
+  text-align: center;
+  max-width: 320px;
+}
+.screenshot-prompt p {
+  font-size: 13px;
+  color: var(--text-soft);
+  margin: 0;
+}
+.screenshot-prompt .highlight {
+  color: var(--pink);
+  font-weight: 700;
+}
+.whatsapp-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  padding: 10px 24px;
+  background: #25D366;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.2s;
+}
+.whatsapp-btn:active { transform: scale(0.96); }
+</style>
+</head>
+<body>
+
+<!-- Floating hearts background (hidden initially, shown after YES) -->
+<div class="floating-hearts" id="floatingHearts" style="display:none"></div>
+
+<!-- Progress dots -->
+<div class="progress" id="progress"></div>
+
+<!-- Scene 0: Opening -->
+<div class="scene active" id="scene-0">
+  <div style="margin-bottom:12px;font-size:60px" class="animate-scale">👀</div>
+  <h1 class="animate-in">Hey Shubhangi…</h1>
+  <p class="animate-in-delay">Someone has something to tell you.<br>No pressure. Okay maybe a little. 😬</p>
+  <div class="animate-in-delay2" style="margin-top:20px">
+    <button class="btn btn-pink" onclick="nextScene()">Okay, I'm curious 👀</button>
+  </div>
+</div>
+
+<!-- Scene 1: Meet the characters -->
+<div class="scene" id="scene-1">
+  <h2 class="animate-in">Before we begin…</h2>
+  <p class="animate-in-delay" style="margin-top:8px">I made us into cartoon bears.<br>Don't judge. I panicked. 🐻</p>
+  <div class="bubu-dudu" style="margin:16px auto">
+    <div class="bear bubu">
+      <div class="bear-body">
+        <div class="bear-arm left"></div>
+        <div class="bear-arm right"></div>
+      </div>
+      <div class="bear-head">
+        <div class="bear-ear left"><div class="bear-ear-inner"></div></div>
+        <div class="bear-ear right"><div class="bear-ear-inner"></div></div>
+        <div class="bear-eye left blink"></div>
+        <div class="bear-eye right blink"></div>
+        <div class="bear-nose"></div>
+        <div class="bear-mouth"></div>
+        <div class="bear-blush left"></div>
+        <div class="bear-blush right"></div>
+      </div>
+    </div>
+    <div class="love-heart" style="animation:none;font-size:20px">🫣</div>
+    <div class="bear dudu">
+      <div class="bear-body">
+        <div class="bear-arm left"></div>
+        <div class="bear-arm right"></div>
+      </div>
+      <div class="bear-head">
+        <div class="bear-ear left"><div class="bear-ear-inner"></div></div>
+        <div class="bear-ear right"><div class="bear-ear-inner"></div></div>
+        <div class="bear-eye left blink"></div>
+        <div class="bear-eye right blink"></div>
+        <div class="bear-nose"></div>
+        <div class="bear-mouth"></div>
+        <div class="bear-blush left"></div>
+        <div class="bear-blush right"></div>
+      </div>
+    </div>
+  </div>
+  <p class="animate-in-delay2" style="margin-top:4px;font-size:12px;color:var(--brown-light)">Blue one = me (obviously the cuter one) 😤</p>
+  <div style="margin-top:16px;opacity:0;animation:fadeInUp 0.6s ease forwards;animation-delay:0.9s">
+    <button class="btn btn-pink" onclick="nextScene()">Lol okay continue 😂</button>
+  </div>
+</div>
+
+<!-- Scene 2: Memory - Majnu ka Tila -->
+<div class="scene" id="scene-2">
+  <div class="memory-scene animate-in">
+    <div class="memory-illustration" style="background: linear-gradient(135deg, #FFE0B2, #FFCC80);">
+      <svg width="280" height="140" viewBox="0 0 280 140">
+        <rect x="20" y="60" width="50" height="80" rx="4" fill="#E8D5B7"/>
+        <rect x="25" y="65" width="15" height="18" rx="2" fill="#FFF3E0"/>
+        <rect x="50" y="65" width="15" height="18" rx="2" fill="#FFF3E0"/>
+        <rect x="80" y="40" width="60" height="100" rx="4" fill="#D7C4A7"/>
+        <rect x="88" y="48" width="16" height="20" rx="2" fill="#FFF3E0"/>
+        <rect x="116" y="48" width="16" height="20" rx="2" fill="#FFF3E0"/>
+        <text x="110" y="88" font-size="8" fill="#8B6F5E" text-anchor="middle" font-family="sans-serif">CAFE</text>
+        <rect x="150" y="50" width="55" height="90" rx="4" fill="#E0CCB0"/>
+        <line x1="30" y1="35" x2="190" y2="25" stroke="#CCC" stroke-width="1"/>
+        <rect x="50" y="28" width="12" height="8" fill="#FF6B6B" rx="1"/>
+        <rect x="70" y="26" width="12" height="8" fill="#64B5F6" rx="1"/>
+        <rect x="90" y="24" width="12" height="8" fill="#FFD54F" rx="1"/>
+        <rect x="110" y="23" width="12" height="8" fill="#81C784" rx="1"/>
+        <rect x="130" y="22" width="12" height="8" fill="#fff" rx="1"/>
+        <rect x="150" y="23" width="12" height="8" fill="#FF6B6B" rx="1"/>
+        <circle cx="215" cy="115" r="14" fill="#7EB8C9"/>
+        <circle cx="215" cy="102" r="10" fill="#7EB8C9"/>
+        <circle cx="240" cy="115" r="13" fill="#F5F0E8"/>
+        <circle cx="240" cy="103" r="9" fill="#F5F0E8"/>
+        <text x="228" y="95" font-size="12">💕</text>
+      </svg>
+    </div>
+    <div class="memory-title">Majnu ka Tila</div>
+    <div class="memory-desc">Laphing and that chocolate shake that was basically liquid sugar. We both pretended it was fine. It was not fine. But we had a great time anyway so who cares. 🥤😂</div>
+  </div>
+  <div class="animate-in-delay" style="margin-top:12px">
+    <button class="btn btn-pink" onclick="nextScene()">Next memory →</button>
+  </div>
+</div>
+
+<!-- Scene 3: Memory - Navratri Garba -->
+<div class="scene" id="scene-3">
+  <div class="memory-scene animate-in">
+    <div class="memory-illustration" style="background: linear-gradient(135deg, #CE93D8, #F48FB1);">
+      <svg width="280" height="140" viewBox="0 0 280 140">
+        <line x1="60" y1="20" x2="100" y2="100" stroke="#FFD54F" stroke-width="4" stroke-linecap="round"/>
+        <line x1="100" y1="20" x2="60" y2="100" stroke="#FF6B8A" stroke-width="4" stroke-linecap="round"/>
+        <line x1="180" y1="20" x2="220" y2="100" stroke="#FF6B8A" stroke-width="4" stroke-linecap="round"/>
+        <line x1="220" y1="20" x2="180" y2="100" stroke="#FFD54F" stroke-width="4" stroke-linecap="round"/>
+        <circle cx="50" cy="30" r="3" fill="#FFD54F" opacity="0.7"/>
+        <circle cx="230" cy="40" r="3" fill="#FFD54F" opacity="0.7"/>
+        <circle cx="140" cy="15" r="3" fill="#fff" opacity="0.6"/>
+        <circle cx="90" cy="50" r="2" fill="#fff" opacity="0.5"/>
+        <circle cx="200" cy="55" r="2" fill="#fff" opacity="0.5"/>
+        <circle cx="120" cy="108" r="16" fill="#7EB8C9"/>
+        <circle cx="120" cy="92" r="12" fill="#7EB8C9"/>
+        <circle cx="160" cy="108" r="15" fill="#F5F0E8"/>
+        <circle cx="160" cy="93" r="11" fill="#F5F0E8"/>
+        <text x="130" y="70" font-size="16">🎶</text>
+        <text x="170" y="45" font-size="12">✨</text>
+        <text x="80" y="75" font-size="12">✨</text>
+      </svg>
+    </div>
+    <div class="memory-title">Navratri Garba Night</div>
+    <div class="memory-desc">My dandiya skills? Questionable at best. But I was too busy trying to look cool in front of you to care. Pretty sure I hit someone. Worth it. 💃</div>
+  </div>
+  <div class="animate-in-delay" style="margin-top:12px">
+    <button class="btn btn-pink" onclick="nextScene()">One more →</button>
+  </div>
+</div>
+
+<!-- Scene 4: Memory - Mess dinners -->
+<div class="scene" id="scene-4">
+  <div class="memory-scene animate-in">
+    <div class="memory-illustration" style="background: linear-gradient(135deg, #A5D6A7, #C8E6C9);">
+      <svg width="280" height="140" viewBox="0 0 280 140">
+        <rect x="60" y="80" width="160" height="8" rx="4" fill="#8B6F5E"/>
+        <rect x="70" y="88" width="8" height="35" fill="#A1887F"/>
+        <rect x="202" y="88" width="8" height="35" fill="#A1887F"/>
+        <ellipse cx="110" cy="75" rx="25" ry="8" fill="#FFF3E0" stroke="#DDD" stroke-width="1"/>
+        <ellipse cx="170" cy="75" rx="25" ry="8" fill="#FFF3E0" stroke="#DDD" stroke-width="1"/>
+        <circle cx="105" cy="72" r="4" fill="#FF8A65"/>
+        <circle cx="115" cy="72" r="4" fill="#FFD54F"/>
+        <circle cx="165" cy="72" r="4" fill="#FF8A65"/>
+        <circle cx="175" cy="72" r="4" fill="#81C784"/>
+        <rect x="135" y="62" width="10" height="16" rx="3" fill="#B3E5FC" opacity="0.6"/>
+        <circle cx="100" cy="55" r="14" fill="#7EB8C9"/>
+        <circle cx="100" cy="42" r="10" fill="#7EB8C9"/>
+        <circle cx="180" cy="55" r="13" fill="#F5F0E8"/>
+        <circle cx="180" cy="43" r="9" fill="#F5F0E8"/>
+        <text x="130" y="35" font-size="14">😄</text>
+        <text x="140" y="55" font-size="10">haha</text>
+      </svg>
+    </div>
+    <div class="memory-title">Our Mess Dinners</div>
+    <div class="memory-desc">Same paneer. Same dal. Same "aaj kya hai?" Same answer: mid. But somehow I kept showing up. Wonder why. 🤔 (It's you. The answer is you.)</div>
+  </div>
+  <div class="animate-in-delay" style="margin-top:12px">
+    <button class="btn btn-pink" onclick="nextScene()">Enough nostalgia, play a game 🎮</button>
+  </div>
+</div>
+
+<!-- Scene 5: Heart Catching Game -->
+<div class="scene" id="scene-5">
+  <h2 style="margin-bottom:6px;font-size:clamp(18px,5vw,24px)">Mini game time! 🎮</h2>
+  <p style="font-size:13px;margin-bottom:8px">Catch 5 falling snacks to unlock a secret.<br>Yes, I made a whole game. No, I'm not okay. 😅</p>
+  <div id="game-container">
+    <div class="game-ui">
+      <div class="game-score">🥟 <span id="hearts-caught">0</span>/5</div>
+      <div class="game-timer">⏱ <span id="game-time">45</span>s</div>
+    </div>
+    <canvas id="game-canvas"></canvas>
+  </div>
+  <p class="game-instructions" id="game-hint">Move the plate to catch the falling food! 🍽️</p>
+</div>
+
+<!-- Scene 6: Confession revealed -->
+<div class="scene" id="scene-6">
+  <div id="confession-reveal">
+    <h2 style="margin-bottom:12px">5 snacks caught! 🥟🎉</h2>
+    <div class="confession-card">
+      <div class="confession-text" id="current-confession"></div>
+      <div class="confession-count" id="confession-counter"></div>
+    </div>
+    <div style="display:flex;gap:10px;margin-top:12px" id="confession-nav">
+      <button class="btn btn-outline" id="conf-prev" onclick="prevConfession()" style="padding:10px 20px;font-size:14px">← Back</button>
+      <button class="btn btn-pink" id="conf-next" onclick="nextConfession()" style="padding:10px 20px;font-size:14px">Next →</button>
+    </div>
+  </div>
+</div>
+
+<!-- Scene 7: Personal message -->
+<div class="scene" id="scene-7">
+  <div class="bubu-dudu" style="margin-bottom:12px">
+    <div class="bear bubu" style="left:50px">
+      <div class="bear-body">
+        <div class="bear-arm left"></div>
+        <div class="bear-arm right" style="transform:rotate(-50deg);right:-2px;"></div>
+      </div>
+      <div class="bear-head">
+        <div class="bear-ear left"><div class="bear-ear-inner"></div></div>
+        <div class="bear-ear right"><div class="bear-ear-inner"></div></div>
+        <div class="bear-eye left blink"></div>
+        <div class="bear-eye right blink"></div>
+        <div class="bear-nose"></div>
+        <div class="bear-mouth"></div>
+        <div class="bear-blush left"></div>
+        <div class="bear-blush right"></div>
+      </div>
+    </div>
+    <div class="love-heart" style="font-size:22px;top:15px">🥺❤️</div>
+    <div class="bear dudu" style="right:50px">
+      <div class="bear-body">
+        <div class="bear-arm left" style="transform:rotate(50deg);left:-2px;"></div>
+        <div class="bear-arm right"></div>
+      </div>
+      <div class="bear-head">
+        <div class="bear-ear left"><div class="bear-ear-inner"></div></div>
+        <div class="bear-ear right"><div class="bear-ear-inner"></div></div>
+        <div class="bear-eye left blink"></div>
+        <div class="bear-eye right blink"></div>
+        <div class="bear-nose"></div>
+        <div class="bear-mouth"></div>
+        <div class="bear-blush left"></div>
+        <div class="bear-blush right"></div>
+      </div>
+    </div>
+  </div>
+  <div class="confession-card animate-in" style="max-width:340px">
+    <div class="confession-text" style="font-size:clamp(16px,4.5vw,20px);line-height:1.6">
+      Shubhangi, from Majnu ka Tila to Garba nights to every mess dinner — every moment with you has been my favorite. I didn't plan this, but you've become someone I think about way too much. I just had to tell you. 🩷
+    </div>
+  </div>
+  <p class="animate-in-delay" style="font-size:12px;color:var(--brown-light);margin-top:8px">— Sandip</p>
+  <div class="animate-in-delay2" style="margin-top:16px">
+    <button class="btn btn-pink" onclick="nextScene()">Okay here comes the scary part 😰</button>
+  </div>
+</div>
+
+<!-- Scene 8: THE ASK -->
+<div class="scene" id="scene-8">
+  <div style="font-size:50px;margin-bottom:8px" class="animate-scale">😰</div>
+  <h1 style="font-size:clamp(24px,7vw,36px)">Shubhangi…<br>will you go on a date with me?</h1>
+  <p class="animate-in-delay" style="font-size:12px;color:var(--brown-light);margin-bottom:4px">(I'm literally shaking rn. This took me 3 hours to make.)</p>
+  <div class="bubu-dudu" style="margin:8px auto">
+    <div class="bear bubu" style="left:50px">
+      <div class="bear-body">
+        <div class="bear-arm left"></div>
+        <div class="bear-arm right" style="transform:rotate(-60deg);right:0;"></div>
+      </div>
+      <div class="bear-head">
+        <div class="bear-ear left"><div class="bear-ear-inner"></div></div>
+        <div class="bear-ear right"><div class="bear-ear-inner"></div></div>
+        <div class="bear-eye left blink"></div>
+        <div class="bear-eye right blink"></div>
+        <div class="bear-nose"></div>
+        <div class="bear-mouth"></div>
+        <div class="bear-blush left"></div>
+        <div class="bear-blush right"></div>
+      </div>
+    </div>
+    <div class="love-heart">💗</div>
+    <div class="bear dudu" style="right:50px">
+      <div class="bear-body">
+        <div class="bear-arm left" style="transform:rotate(60deg);left:0;"></div>
+        <div class="bear-arm right"></div>
+      </div>
+      <div class="bear-head">
+        <div class="bear-ear left"><div class="bear-ear-inner"></div></div>
+        <div class="bear-ear right"><div class="bear-ear-inner"></div></div>
+        <div class="bear-eye left blink"></div>
+        <div class="bear-eye right blink"></div>
+        <div class="bear-nose"></div>
+        <div class="bear-mouth"></div>
+        <div class="bear-blush left"></div>
+        <div class="bear-blush right"></div>
+      </div>
+    </div>
+  </div>
+  <div class="ask-buttons" id="ask-buttons">
+    <button id="btn-yes" onclick="sayYes()">Yes! 💕</button>
+    <button id="btn-no" onmouseenter="runAwayNo()" ontouchstart="runAwayNo()">No</button>
+  </div>
+  <p id="no-hint" style="font-size:11px;color:var(--brown-light);margin-top:8px;opacity:0;transition:opacity 0.3s"></p>
+</div>
+
+<!-- Scene 9: Date Picker -->
+<div class="scene" id="scene-9">
+  <h2>SHE SAID YES?! 🎉</h2>
+  <p style="margin:8px 0 4px">Wait fr?? Okay okay act cool.<br>So… what are we doing? 😎</p>
+  <div class="date-options">
+    <div class="date-option" onclick="selectDate(this)">
+      <span class="date-emoji">☕</span>
+      <span class="date-label">Coffee Date</span>
+    </div>
+    <div class="date-option" onclick="selectDate(this)">
+      <span class="date-emoji">🍽️</span>
+      <span class="date-label">Dinner Date</span>
+    </div>
+    <div class="date-option" onclick="selectDate(this)">
+      <span class="date-emoji">🥗</span>
+      <span class="date-label">Lunch Date</span>
+    </div>
+    <div class="date-option" onclick="selectDate(this)">
+      <span class="date-emoji">🎬</span>
+      <span class="date-label">Movie Night</span>
+    </div>
+    <div class="date-option" onclick="selectDate(this)">
+      <span class="date-emoji">🚶‍♂️</span>
+      <span class="date-label">Walk & Talk</span>
+    </div>
+    <div class="date-option" onclick="selectDate(this)">
+      <span class="date-emoji">🎯</span>
+      <span class="date-label">Fun Activity</span>
+    </div>
+    <div class="date-option" onclick="selectDate(this)">
+      <span class="date-emoji">🛍️</span>
+      <span class="date-label">Explore Delhi</span>
+    </div>
+    <div class="date-option" onclick="selectDate(this)">
+      <span class="date-emoji">🎁</span>
+      <span class="date-label">Surprise Me!</span>
+    </div>
+  </div>
+  <div id="datetime-picker" style="width:100%;max-width:320px;margin:12px 0;display:none">
+    <p style="font-size:14px;font-weight:600;color:var(--pink);margin-bottom:8px">When works for you? 📅</p>
+    <div style="display:flex;gap:10px">
+      <div style="flex:1">
+        <label style="font-size:12px;color:var(--text-soft);font-weight:600;display:block;margin-bottom:4px">Date</label>
+        <input type="date" id="pick-date" style="width:100%;padding:10px 12px;border:2px solid var(--pink-light);border-radius:12px;font-family:'Quicksand',sans-serif;font-size:14px;background:var(--cream);color:var(--fg);outline:none" onchange="checkDateTime()">
+      </div>
+      <div style="flex:1">
+        <label style="font-size:12px;color:var(--text-soft);font-weight:600;display:block;margin-bottom:4px">Time</label>
+        <input type="time" id="pick-time" style="width:100%;padding:10px 12px;border:2px solid var(--pink-light);border-radius:12px;font-family:'Quicksand',sans-serif;font-size:14px;background:var(--cream);color:var(--fg);outline:none" onchange="checkDateTime()">
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-pink" id="confirm-date" style="margin-top:8px;opacity:0.4;pointer-events:none" onclick="confirmAndSave()">Let's do it! 🎉</button>
+</div>
+
+<!-- Scene 10: Celebration -->
+<div class="scene" id="scene-10">
+  <div class="celebration-emoji">🥳</div>
+  <h1 style="margin:12px 0 8px">It's a Date!</h1>
+  <div class="bubu-dudu" style="margin:8px auto">
+    <div class="bear bubu" style="left:55px">
+      <div class="bear-body">
+        <div class="bear-arm left"></div>
+        <div class="bear-arm right" style="transform:rotate(-70deg);right:2px;top:10px"></div>
+      </div>
+      <div class="bear-head">
+        <div class="bear-ear left"><div class="bear-ear-inner"></div></div>
+        <div class="bear-ear right"><div class="bear-ear-inner"></div></div>
+        <div class="bear-eye left blink"></div>
+        <div class="bear-eye right blink"></div>
+        <div class="bear-nose"></div>
+        <div class="bear-mouth"></div>
+        <div class="bear-blush left"></div>
+        <div class="bear-blush right"></div>
+      </div>
+    </div>
+    <div class="love-heart" style="font-size:32px">💞</div>
+    <div class="bear dudu" style="right:55px">
+      <div class="bear-body">
+        <div class="bear-arm left" style="transform:rotate(70deg);left:2px;top:10px"></div>
+        <div class="bear-arm right"></div>
+      </div>
+      <div class="bear-head">
+        <div class="bear-ear left"><div class="bear-ear-inner"></div></div>
+        <div class="bear-ear right"><div class="bear-ear-inner"></div></div>
+        <div class="bear-eye left blink"></div>
+        <div class="bear-eye right blink"></div>
+        <div class="bear-nose"></div>
+        <div class="bear-mouth"></div>
+        <div class="bear-blush left"></div>
+        <div class="bear-blush right"></div>
+      </div>
+    </div>
+  </div>
+  <p id="date-confirm-text" style="margin-top:8px;font-size:16px;font-weight:600;color:var(--pink)"></p>
+  <p style="margin-top:4px;font-size:14px">Can't wait to see you! 🩷</p>
+
+  <div class="screenshot-prompt" style="margin-top:16px">
+    <p>📸 <span class="highlight">Screenshot this</span> and send it to Sandip!</p>
+    <p style="margin-top:6px;font-size:12px">Or tap below to tell him on WhatsApp 👇</p>
+    <a class="whatsapp-btn" id="whatsapp-link" href="#" target="_blank" rel="noopener">💬 Send on WhatsApp</a>
+  </div>
+
+  <p style="margin-top:16px;font-size:12px;color:var(--brown-light)">— with all the butterflies, Sandip 🦋</p>
+</div>
+
+<script>
+const CONFESSIONS = [
+  "I really enjoy talking to you… like more than I expected.",
+  "There's something about you I can't ignore.",
+  "I think I like you a little more than I should.",
+  "You've been on my mind a lot lately.",
+  "I feel different when I'm around you.",
+  "I don't know what it is, but you make me smile for no reason.",
+  "Talking to you is honestly my favorite part of the day.",
+  "I didn't plan on liking you… but here we are.",
+  "I'm starting to think I like you… should I be worried?",
+  "You're kinda becoming my favorite distraction."
+];
+
+const TOTAL_SCENES = 11;
+let currentScene = 0;
+let heartsCaught = 0;
+let gameActive = false;
+let gameTimer = null;
+let confessionIndex = 0;
+let noAttempts = 0;
+let selectedDate = '';
+let yesScale = 1;
+
+function init() {
+  createFloatingHearts();
+  updateProgress();
+}
+
+function createFloatingHearts() {
+  const container = document.getElementById('floatingHearts');
+  const symbols = ['💕', '💗', '💖', '✨', '🩷'];
+  for (let i = 0; i < 15; i++) {
+    const heart = document.createElement('div');
+    heart.className = 'heart';
+    heart.textContent = symbols[i % symbols.length];
+    heart.style.left = Math.random() * 100 + '%';
+    heart.style.animationDuration = (8 + Math.random() * 12) + 's';
+    heart.style.animationDelay = (Math.random() * 10) + 's';
+    heart.style.fontSize = (14 + Math.random() * 16) + 'px';
+    container.appendChild(heart);
+  }
+}
+
+function updateProgress() {
+  const prog = document.getElementById('progress');
+  prog.innerHTML = '';
+  for (let i = 0; i < TOTAL_SCENES; i++) {
+    const dot = document.createElement('div');
+    dot.className = 'dot' + (i === currentScene ? ' active' : '');
+    prog.appendChild(dot);
+  }
+}
+
+function nextScene() {
+  const cur = document.getElementById('scene-' + currentScene);
+  cur.classList.remove('active');
+  currentScene++;
+  const next = document.getElementById('scene-' + currentScene);
+  next.classList.add('active');
+  updateProgress();
+
+  if (currentScene === 5) {
+    setTimeout(startGame, 500);
+  }
+  if (currentScene === 10) {
+    launchConfetti();
+  }
+}
+
+// ===== FOOD CATCHING GAME =====
+const FOOD_ITEMS = ['🥟','🍕','☕','🧁','🍪','🌮','🍩','🫕'];
+const CATCH_HINTS = [
+  "1 down! Your reflexes > your cooking skills 🔥",
+  "2! Easier than getting mess food on time",
+  "3! You're a natural. Unlike mess paneer.",
+  "4! ONE MORE. I believe in you more than mess dal.",
+  "5!! Okay now the real stuff begins… 😳"
+];
+
+function startGame() {
+  const canvas = document.getElementById('game-canvas');
+  const container = document.getElementById('game-container');
+  const ctx = canvas.getContext('2d');
+
+  canvas.width = container.clientWidth * 2;
+  canvas.height = container.clientHeight * 2;
+  canvas.style.width = container.clientWidth + 'px';
+  canvas.style.height = container.clientHeight + 'px';
+  ctx.scale(2, 2);
+
+  const W = container.clientWidth;
+  const H = container.clientHeight;
+
+  let items = [];
+  let particles = [];
+  let catcher = { x: W / 2, y: H - 40, w: 65, h: 12 };
+  heartsCaught = 0;
+  gameActive = true;
+  let timeLeft = 45;
+
+  document.getElementById('hearts-caught').textContent = '0';
+  document.getElementById('game-time').textContent = '45';
+
+  function moveCatcher(clientX) {
+    const rect = canvas.getBoundingClientRect();
+    catcher.x = ((clientX - rect.left) / rect.width) * W;
+    catcher.x = Math.max(catcher.w / 2, Math.min(W - catcher.w / 2, catcher.x));
+  }
+
+  canvas.addEventListener('touchmove', e => {
+    e.preventDefault();
+    moveCatcher(e.touches[0].clientX);
+  }, { passive: false });
+  canvas.addEventListener('mousemove', e => moveCatcher(e.clientX));
+  canvas.addEventListener('touchstart', e => {
+    e.preventDefault();
+    moveCatcher(e.touches[0].clientX);
+  }, { passive: false });
+
+  function spawnItem() {
+    if (!gameActive || heartsCaught >= 5) return;
+    items.push({
+      x: 30 + Math.random() * (W - 60),
+      y: -20,
+      speed: 1.5 + Math.random() * 1.5 + (heartsCaught * 0.1),
+      size: 24 + Math.random() * 10,
+      wobble: Math.random() * Math.PI * 2,
+      wobbleSpeed: 0.02 + Math.random() * 0.02,
+      emoji: FOOD_ITEMS[Math.floor(Math.random() * FOOD_ITEMS.length)],
+      rotation: 0,
+      rotSpeed: (Math.random() - 0.5) * 0.06
+    });
+  }
+
+  function addParticles(x, y) {
+    for (let i = 0; i < 8; i++) {
+      particles.push({
+        x, y,
+        vx: (Math.random() - 0.5) * 6,
+        vy: -Math.random() * 4 - 2,
+        life: 1,
+        size: 3 + Math.random() * 4,
+        color: ['#FFD54F', '#FF8A65', '#81C784', '#64B5F6'][Math.floor(Math.random() * 4)]
+      });
+    }
+  }
+
+  function drawCatcher() {
+    ctx.save();
+    ctx.translate(catcher.x, catcher.y);
+    // Draw a plate
+    ctx.fillStyle = '#FFF8E1';
+    ctx.beginPath();
+    ctx.ellipse(0, 5, catcher.w/2, catcher.h, 0, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.strokeStyle = '#E0E0E0';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+    // Inner plate rim
+    ctx.beginPath();
+    ctx.ellipse(0, 5, catcher.w/2 - 8, catcher.h - 3, 0, 0, Math.PI * 2);
+    ctx.strokeStyle = '#EEEEEE';
+    ctx.lineWidth = 1;
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  function drawFoodItem(item) {
+    ctx.save();
+    const drawX = item.x + Math.sin(item.wobble) * 20;
+    ctx.translate(drawX, item.y);
+    item.rotation += item.rotSpeed;
+    ctx.rotate(item.rotation);
+    ctx.font = item.size + 'px serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(item.emoji, 0, 0);
+    ctx.restore();
+  }
+
+  let spawnCounter = 0;
+  function gameLoop() {
+    if (!gameActive) return;
+
+    ctx.clearRect(0, 0, W, H);
+
+    spawnCounter++;
+    if (spawnCounter % (30 - Math.min(heartsCaught * 2, 15)) === 0) {
+      spawnItem();
+    }
+
+    for (let i = items.length - 1; i >= 0; i--) {
+      const item = items[i];
+      item.y += item.speed;
+      item.wobble += item.wobbleSpeed;
+      const drawX = item.x + Math.sin(item.wobble) * 20;
+
+      drawFoodItem(item);
+
+      if (item.y + item.size/2 > catcher.y - 5 &&
+          item.y - item.size/2 < catcher.y + catcher.h + 10 &&
+          Math.abs(drawX - catcher.x) < catcher.w/2 + item.size/3) {
+        items.splice(i, 1);
+        heartsCaught++;
+        document.getElementById('hearts-caught').textContent = heartsCaught;
+        addParticles(drawX, catcher.y);
+
+        const hint = document.getElementById('game-hint');
+        hint.textContent = CATCH_HINTS[heartsCaught - 1];
+        hint.style.color = 'var(--pink)';
+        hint.style.fontWeight = '600';
+
+        if (heartsCaught >= 5) {
+          gameActive = false;
+          clearInterval(gameTimer);
+          setTimeout(() => {
+            hint.textContent = 'All snacks caught! Now for the real deal… 🫣';
+            setTimeout(finishGame, 1200);
+          }, 500);
+        }
+        continue;
+      }
+
+      if (item.y > H + 30) {
+        items.splice(i, 1);
+      }
+    }
+
+    for (let i = particles.length - 1; i >= 0; i--) {
+      const p = particles[i];
+      p.x += p.vx;
+      p.y += p.vy;
+      p.vy += 0.15;
+      p.life -= 0.025;
+      if (p.life <= 0) { particles.splice(i, 1); continue; }
+      ctx.globalAlpha = p.life;
+      ctx.fillStyle = p.color;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.globalAlpha = 1;
+    }
+
+    drawCatcher();
+
+    requestAnimationFrame(gameLoop);
+  }
+
+  gameTimer = setInterval(() => {
+    timeLeft--;
+    document.getElementById('game-time').textContent = timeLeft;
+    if (timeLeft <= 0 && gameActive) {
+      gameActive = false;
+      clearInterval(gameTimer);
+      heartsCaught = 5;
+      document.getElementById('hearts-caught').textContent = '5';
+      document.getElementById('game-hint').textContent = 'Time\'s up — but you still get all the snacks (and feelings)! 🥟';
+      setTimeout(finishGame, 1500);
+    }
+  }, 1000);
+
+  gameLoop();
+}
+
+function finishGame() {
+  nextScene();
+  showConfession(0);
+}
+
+// ===== CONFESSIONS =====
+function showConfession(idx) {
+  confessionIndex = idx;
+  document.getElementById('current-confession').textContent = '"' + CONFESSIONS[idx] + '"';
+  document.getElementById('confession-counter').textContent = (idx + 1) + ' of 10';
+  document.getElementById('conf-prev').style.visibility = idx === 0 ? 'hidden' : 'visible';
+  document.getElementById('conf-next').textContent = idx === 9 ? 'Continue 💕' : 'Next →';
+}
+function prevConfession() {
+  if (confessionIndex > 0) showConfession(confessionIndex - 1);
+}
+function nextConfession() {
+  if (confessionIndex < 9) {
+    showConfession(confessionIndex + 1);
+  } else {
+    nextScene();
+  }
+}
+
+// ===== RUNAWAY NO BUTTON =====
+function runAwayNo() {
+  noAttempts++;
+  const btn = document.getElementById('btn-no');
+  const hint = document.getElementById('no-hint');
+
+  const messages = [
+    "Lol nice try 😏",
+    "Bro this button has trust issues",
+    "It's allergic to rejection 🤧",
+    "404: No not found",
+    "Even the button wants you to say yes",
+    "I spent 3 hours coding this. Say yes. 😤",
+    "The button has left the chat 🏃‍♂️",
+    "*button.exe has stopped working*"
+  ];
+
+  hint.textContent = messages[Math.min(noAttempts - 1, messages.length - 1)];
+  hint.style.opacity = '1';
+
+  const scale = Math.max(0.3, 1 - noAttempts * 0.1);
+  btn.style.transform = 'scale(' + scale + ')';
+
+  const maxX = 120;
+  const maxY = 40;
+  const rx = (Math.random() - 0.5) * maxX * 2;
+  const ry = (Math.random() - 0.5) * maxY * 2;
+  btn.style.position = 'relative';
+  btn.style.left = rx + 'px';
+  btn.style.top = ry + 'px';
+
+  yesScale += 0.08;
+  const yesBtn = document.getElementById('btn-yes');
+  yesBtn.style.transform = 'scale(' + Math.min(yesScale, 1.5) + ')';
+  yesBtn.style.fontSize = Math.min(18 + noAttempts * 1.5, 28) + 'px';
+
+  if (noAttempts >= 7) {
+    btn.style.opacity = '0.2';
+    btn.style.pointerEvents = 'none';
+  }
+}
+
+function sayYes() {
+  // BIG CELEBRATION! 🎉
+  const fh = document.getElementById('floatingHearts');
+  fh.style.display = '';
+  createFloatingHearts();
+
+  // Screen shake
+  document.body.style.animation = 'none';
+  document.body.offsetHeight; // reflow
+  document.body.style.animation = 'yesCelebShake 0.6s ease-out';
+
+  // Massive confetti burst
+  launchYesConfetti();
+
+  // Show celebration overlay
+  const overlay = document.createElement('div');
+  overlay.id = 'yes-celebration';
+  overlay.innerHTML = `
+    <div style="font-size:80px;animation:celebBounce 0.5s ease-out">🎉</div>
+    <div style="font-size:36px;font-weight:800;font-family:'Satisfy',cursive;color:var(--pink);margin:8px 0;animation:celebBounce 0.5s ease-out 0.1s both">SHE SAID YES!</div>
+    <div style="font-size:40px;animation:celebBounce 0.5s ease-out 0.2s both">🥳🎊🥺💕🎉</div>
+    <div style="font-size:14px;margin-top:12px;color:var(--text-soft);animation:celebBounce 0.5s ease-out 0.3s both">*happy bear noises* 🐻💙</div>
+  `;
+  overlay.style.cssText = 'position:fixed;inset:0;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(255,255,255,0.92);backdrop-filter:blur(8px);';
+  document.body.appendChild(overlay);
+
+  // Second wave of confetti after a beat
+  setTimeout(() => launchYesConfetti(), 800);
+
+  // Auto-dismiss and go to next scene
+  setTimeout(() => {
+    overlay.style.transition = 'opacity 0.5s';
+    overlay.style.opacity = '0';
+    setTimeout(() => {
+      overlay.remove();
+      nextScene();
+    }, 500);
+  }, 3000);
+}
+
+function launchYesConfetti() {
+  const colors = ['#FF6B8A', '#FFD54F', '#64B5F6', '#81C784', '#BA68C8', '#FF8A80', '#7EB8C9'];
+  for (let i = 0; i < 100; i++) {
+    const piece = document.createElement('div');
+    piece.className = 'confetti-piece';
+    piece.style.left = Math.random() * 100 + '%';
+    piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+    piece.style.animationDuration = (2 + Math.random() * 3) + 's';
+    piece.style.animationDelay = Math.random() * 0.8 + 's';
+    piece.style.width = (6 + Math.random() * 10) + 'px';
+    piece.style.height = (6 + Math.random() * 10) + 'px';
+    piece.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+    document.body.appendChild(piece);
+    setTimeout(() => piece.remove(), 5500);
+  }
+}
+
+// ===== DATE PICKER =====
+let pickedDate = '';
+let pickedTime = '';
+
+function selectDate(el) {
+  document.querySelectorAll('.date-option').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  selectedDate = el.querySelector('.date-label').textContent;
+  document.getElementById('datetime-picker').style.display = 'block';
+  checkDateTime();
+}
+
+function checkDateTime() {
+  pickedDate = document.getElementById('pick-date').value;
+  pickedTime = document.getElementById('pick-time').value;
+  const confirmBtn = document.getElementById('confirm-date');
+  if (selectedDate && pickedDate && pickedTime) {
+    confirmBtn.style.opacity = '1';
+    confirmBtn.style.pointerEvents = 'auto';
+  } else if (selectedDate) {
+    confirmBtn.style.opacity = '0.4';
+    confirmBtn.style.pointerEvents = 'none';
+  }
+}
+
+function confirmAndSave() {
+  nextScene();
+}
+
+// ===== CONFETTI =====
+function launchConfetti() {
+  const colors = ['#FF6B8A', '#FFD54F', '#64B5F6', '#81C784', '#BA68C8', '#FF8A80'];
+  for (let i = 0; i < 80; i++) {
+    const piece = document.createElement('div');
+    piece.className = 'confetti-piece';
+    piece.style.left = Math.random() * 100 + '%';
+    piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+    piece.style.animationDuration = (2 + Math.random() * 3) + 's';
+    piece.style.animationDelay = Math.random() * 1.5 + 's';
+    piece.style.width = (6 + Math.random() * 8) + 'px';
+    piece.style.height = (6 + Math.random() * 8) + 'px';
+    piece.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+    document.body.appendChild(piece);
+    setTimeout(() => piece.remove(), 5000);
+  }
+
+  // Show formatted details
+  let confirmText = selectedDate ? selectedDate + ' it is! 🎯' : "It's a date! 🎯";
+  if (pickedDate && pickedTime) {
+    const d = new Date(pickedDate + 'T' + pickedTime);
+    const fDate = d.toLocaleDateString('en-IN', { weekday: 'short', month: 'short', day: 'numeric' });
+    const fTime = d.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', hour12: true });
+    confirmText += '\n📅 ' + fDate + ' at ' + fTime;
+  }
+  const el = document.getElementById('date-confirm-text');
+  el.style.whiteSpace = 'pre-line';
+  el.textContent = confirmText;
+
+  // Build WhatsApp link
+  let waMsg = 'Hey Sandip! I said YES! 💕';
+  if (selectedDate) waMsg += '\nDate type: ' + selectedDate;
+  if (pickedDate && pickedTime) {
+    const d = new Date(pickedDate + 'T' + pickedTime);
+    const fDate = d.toLocaleDateString('en-IN', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+    const fTime = d.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', hour12: true });
+    waMsg += '\nWhen: ' + fDate + ' at ' + fTime;
+  }
+  waMsg += '\n🩷';
+  document.getElementById('whatsapp-link').href = 'https://wa.me/?text=' + encodeURIComponent(waMsg);
+}
+
+init();
+</script>
+
+</body>
+</html>
